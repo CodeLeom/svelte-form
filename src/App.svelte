@@ -1,7 +1,9 @@
 <script>
 	import Login from "./Login.svelte";
 	import { onMount, setContext } from "svelte";
-  
+	import Event from "./event.svelte";
+	import Forward from "./forward.svelte";
+
   import {
 	key as userContextKey,
 	initialValue as userContextInitialValue
@@ -24,7 +26,20 @@
 		resolve();
 	  }, 1000);
 	});
+
+	function handleMessage(event){
+		alert(event.detail.text)
+	}
 </script>
+
+
+<h1>An event Listener, click the button below</h1>
+<!-- <Event on:message={handleMessage} /> -->
+<Forward on:message={handleMessage} />
+
+<!-- <button on:click={ e => { alert('I am an Inline Event') } }>
+    Click Here
+</button> -->
 
 <section>
 	<Login {submit} />
